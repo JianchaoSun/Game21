@@ -12,8 +12,6 @@ public:
     int getNum() const {
         return (rand()%6)+1;
     }
-
-
 };
 class player{
 private:
@@ -44,22 +42,27 @@ int main() {
         computer.roll(d2.getNum());
         if (choice == 1) {
             cout << player1.roll(d1.getNum());
-            cout << "Current point is" << player1.getPoint();
+            cout << "Current point is" << player1.getPoint()<<endl;
         } else {
             cout <<"player: "<<player1.getPoint()<<endl;
             cout <<"computer: "<< computer.getPoint()<<endl;
             if (player1.getPoint() > 21&&computer.getPoint()<=21) {
                 cout << "player lost";
             } else if (player1.getPoint() > computer.getPoint()) {
+                if (player1.getPoint() > 21 && computer.getPoint() > 21) {
+                    cout << "draw";
+                } else {
                 cout << "Player win";
+            }
             } else if (player1.getPoint() < computer.getPoint() && computer.getPoint() > 21) {
-                cout << "player win";
+                if(player1.getPoint()<=21){
+                cout << "player win";}else{
+                    cout <<"draw"<<endl;
+                }
             } else if (player1.getPoint() < computer.getPoint() && computer.getPoint() <= 21) {
                 cout << "player lost";
             } else if (player1.getPoint() == computer.getPoint()) {
                 cout << "draw";
-            }else if(player1.getPoint()>21&&computer.getPoint()>21){
-                cout<<"draw";
             }
 
             TRUE = false;
@@ -68,3 +71,4 @@ int main() {
     }
 
         }
+
